@@ -99,23 +99,27 @@ const PdfEditor = ({
 
       <div className="pdf-viewer-container">
         <Document file={selectedFile} onLoadSuccess={onDocumentLoadSuccess}>
-          <Page
-            pageNumber={pageNumber}
-            width={pdfWidth}
-            renderTextLayer={false}
-            renderAnnotationLayer={false}
-            canvasBackground="white"
-          />
-        </Document>
+          <div
+            style={{ position: "relative", width: pdfWidth, margin: "0 auto" }}
+          >
+            <Page
+              pageNumber={pageNumber}
+              width={pdfWidth}
+              renderTextLayer={false}
+              renderAnnotationLayer={false}
+              canvasBackground="white"
+            />
 
-        {currentPageSignatures.map((sig) => (
-          <SignatureItem
-            key={sig.id}
-            sig={sig}
-            onDrag={updateSignaturePosition}
-            onResize={updateSignatureSize}
-          />
-        ))}
+            {currentPageSignatures.map((sig) => (
+              <SignatureItem
+                key={sig.id}
+                sig={sig}
+                onDrag={updateSignaturePosition}
+                onResize={updateSignatureSize}
+              />
+            ))}
+          </div>
+        </Document>
       </div>
 
       <div className="pdf-pagination">
